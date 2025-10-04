@@ -103,13 +103,26 @@ body {
   padding: 5px 15px;
   border-radius: 5px;
 }
-
-/* 🖼️ Hero */
 .hero img {
-  /* margin-top: 70px; */
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
+  width: 100%;        /* screen ke width ke hisaab se */
+  height: 100vh;      /* viewport height ke hisaab se */
+  object-fit: cover;  /* image crop nahi hogi, cover karegi */
+  display: block;
+}
+
+/* Mobile / Tablet responsive */
+@media (max-width: 768px) {
+  .hero img {
+    height: 60vh;      /* mobile me height chhoti kar do */
+    object-fit: cover;  /* image properly fit rahe */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero img {
+    height: 50vh;      /* chhote phones ke liye aur chhoti height */
+    object-fit: cover;
+  }
 }
 
 /* 💎 Products */
