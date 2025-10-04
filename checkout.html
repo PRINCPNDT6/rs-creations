@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | NAINA Jewellery</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .checkout {
+      max-width: 500px;
+      margin: 100px auto 50px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+
+    .checkout h2 {
+      color: #b8860b;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .checkout label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    .checkout input, .checkout textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .checkout button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #b8860b;
+      color: #fff;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .checkout button:hover {
+      background-color: #a17b05;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="menu-icon" id="menuIcon">☰</div>
+  <div class="logo" onclick="window.location.href='index.html'">NAINA</div>
+  <div class="cart-icon" onclick="window.location.href='cart.html'">🛒</div>
+</nav>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+  <div class="close-btn" id="closeBtn">&times;</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+  <div class="checkout">
+    <h2>Checkout</h2>
+    <form id="checkoutForm">
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" required>
+
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" required>
+
+      <label for="whatsapp">WhatsApp Number</label>
+      <input type="tel" id="whatsapp" value="7618612979" required>
+
+      <label for="address">Address</label>
+      <textarea id="address" rows="4" required></textarea>
+
+      <button type="submit">Confirm Order</button>
+    </form>
+  </div>
+
+  <script>
+    // Load BuyNow product
+    const product = JSON.parse(localStorage.getItem("buyNowProduct"));
+    if (!product) {
+      alert("No product selected. Redirecting to homepage.");
+      window.location.href = "index.html";
+    }
+
+    document.getElementById("checkoutForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const fname = document.getElementById("fname").value.trim();
+      const lname = document.getElementById("lname").value.trim();
+      const whatsapp = document.getElementById("whatsapp").value.trim();
+      const address = document.getElementById("address").value.trim();
+
+      // Prepare WhatsApp message
+      const message = `
+Hello! I want to purchase this product:
+Product: ${product.name}
+Price: ₹${product.price}
+Discount: ${product.discount}
+
+Customer Details:
+Name: ${fname} ${lname}
+WhatsApp: ${whatsapp}
+Address: ${address}
+      `;
+      const encodedMessage = encodeURIComponent(message);
+      const waNumber = "7618612979"; // Your WhatsApp number
+      const url = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+
+      // Open WhatsApp
+      window.open(url, "_blank");
+      alert("WhatsApp will open to confirm your order!");
+    });
+
+    // slider 
+     
+
+const menuIcon = document.getElementById("menuIcon");
+const sidebar = document.getElementById("sidebar");
+const closeBtn = document.getElementById("closeBtn");
+
+menuIcon.addEventListener("click", () => {
+  sidebar.style.left = "0";
+});
+
+closeBtn.addEventListener("click", () => {
+  sidebar.style.left = "-250px";
+});
+
+// Optional: click outside sidebar to close
+window.addEventListener("click", (e) => {
+  if (e.target === sidebar) {
+    sidebar.style.left = "-250px";
+  }
+});
+
+
+  </script>
+</body>
+</html>

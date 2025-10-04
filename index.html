@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAINA Jewellery</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 🌸 NAVBAR -->
+    <nav class="navbar">
+  <div class="menu-icon" id="menuIcon">☰</div>
+  <div class="logo" onclick="window.location.href='index.html'">NAINA</div>
+  <div class="cart-icon" onclick="window.location.href='cart.html'">🛒</div>
+</nav>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+  <div class="close-btn" id="closeBtn">&times;</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+
+  <!-- 🖼️ HERO IMAGE -->
+  <section class="hero">
+    <img src="jewellery.png" alt="Jewellery Banner">
+  </section>
+
+  <!-- 💎 PRODUCTS SECTION -->
+  <section class="products">
+    <h2>Our Collection</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- JS se Products dynamically add honge -->
+    </div>
+  </section>
+
+  <!-- ⭐ FEEDBACK SECTION -->
+<section class="feedback">
+  <h2>Customer Feedback</h2>
+  <div class="feedback-slider">
+    <div class="feedback-track">
+      <div class="feedback-card">
+        <p>"Beautiful jewellery and fast delivery!"</p>
+        <h4>- Aarti Sharma</h4>
+      </div>
+      <div class="feedback-card">
+        <p>"Loved the design and quality. Worth buying!"</p>
+        <h4>- Priya Singh</h4>
+      </div>
+      <div class="feedback-card">
+        <p>"Amazing customer service and packaging."</p>
+        <h4>- Kavita Rao</h4>
+      </div>
+      <!-- Add more cards if needed -->
+    </div>
+
+    <!-- Arrows -->
+    <button class="slide-btn left" onclick="prevFeedback()">&#10094;</button>
+    <button class="slide-btn right" onclick="nextFeedback()">&#10095;</button>
+  </div>
+</section>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
